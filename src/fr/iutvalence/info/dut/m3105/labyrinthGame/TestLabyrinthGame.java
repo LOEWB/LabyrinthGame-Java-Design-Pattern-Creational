@@ -17,15 +17,20 @@ public class TestLabyrinthGame
 	 */
 	public static void main(String[] args)
 	{
-		Set<Position> blockPositions = new HashSet<Position>();
-		blockPositions.add(new Position(2,0));
-		blockPositions.add(new Position(3,0));
-		blockPositions.add(new Position(0,1));
-		blockPositions.add(new Position(0,2));
-		blockPositions.add(new Position(1,2));
-		blockPositions.add(new Position(3,2));
-		blockPositions.add(new Position(3,3));
+			
+		LabyrinthBuilder LabyBui = new LabyrinthBuilder();
+		LabyBui.setWidth(4);
+		LabyBui.setHeight(4);
 		
-		new LabyrinthGame(new Labyrinth(4, 4, blockPositions, new Position(3,1)), new LesserDumbBotArtificialIntelligence()).play();
+		LabyBui.addForbiddenCell(new Position(2,0));
+		LabyBui.addForbiddenCell(new Position(3,0));
+		LabyBui.addForbiddenCell(new Position(0,1));
+		LabyBui.addForbiddenCell(new Position(0,2));
+		LabyBui.addForbiddenCell(new Position(1,2));
+		LabyBui.addForbiddenCell(new Position(3,2));
+		LabyBui.addForbiddenCell(new Position(3,3));
+		
+		LabyBui.setExitPosition(new Position(3,1));
+		RobotArtificialIntelligence RAI = RobotArtificialIntelligence.makeRAI("Dumb");
 	}
 }
